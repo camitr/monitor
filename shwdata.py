@@ -27,7 +27,7 @@ print '''
 			<h2> Percentage of different packets size capture</h2>
 			<iframe src=http://10.129.200.50/cgi-bin/monitor/shwpckt.py  width=100% height=30% ></iframe>
 
-			<table border=0 width=100% bgcolor=#6666CC>
+			<table border=1 width=100% bgcolor=#6666CC>
 				<form action=/cgi-bin/monitor/run-linux.py method=post/>
 				<tr>
 					<td>
@@ -55,7 +55,18 @@ print '''
 						<button type=submit autofocus style='width=48;height=60;background-color:#98FB98'>kill XP2</button>
 					</td>
 				</form>
+
 				</tr>
+				<tr>
+				<form action=/cgi-bin/monitor/delall.py method=post/>
+					<td colspan=4>
+				<!--		<div style="text-align:center">-->
+						<button type=submit autofocus style='width:48;height:60;background-color:#FF5353;margin-left:50%'>Delete</button>
+					<!--	</div>-->
+					</td>
+				</tr>
+				</form>
+
 			</table>
 		</body>
 	</html>'''
