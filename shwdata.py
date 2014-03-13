@@ -18,7 +18,6 @@ form = cgi.FieldStorage()
 keyword = form.getvalue('keyword')
 
 
-#print "<meta http-equiv=refresh content=2>"
 print '''
 		 <body>
 
