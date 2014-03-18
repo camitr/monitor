@@ -11,7 +11,7 @@ print ''' <!DOCTYPE html>
 
 import cgi
 import cgitb
-cgitb.enable()
+cgitb.enable(display=0, logdir="/var/www/cgi-bin/monitor/logdir")
 import MySQLdb as mdb
 
 form = cgi.FieldStorage()
@@ -21,7 +21,7 @@ keyword = form.getvalue('keyword')
 print '''
 		 <body>
 
-			<h2> Packet size and Upload & Download Bandwidth of Clients</h2>
+			<h2> Packet size and Upload & Download Bandwidth of Clients:Kbps</h2>
 			<iframe src=http://10.129.200.50/cgi-bin/monitor/shwband.py  width=100% height=50% ></iframe>
 
 			<h2> Percentage of different packets size capture</h2>

@@ -4,8 +4,9 @@
                     
 mydate=$(date +%Y-%m-%d' '%H:%M:%S)
 echo ","$mydate >date.csv
-hostname>source.csv
- 
+#hostname>source.csv
+ src=$(hostname)
+echo $src>source.csv
 # 	cd Test$(date +%d%m%y_%H_%M)
 
 #	mkdir ClientUploadTest
@@ -52,40 +53,43 @@ HostIp=$(ip addr show eth0 | grep -o 'inet [0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+' |
 #TotalCapPacket=`cat TotalClientPacket.csv`
 TotalCapPacket=$(wc -l<length.csv)
 
+echo ","$src>source.csv
+paste -d ',' source.csv>Percentage.csv
 awk '{ if ($1 >= 40 && $1 <= 79) print $1 }' length.csv>40-79.csv
 total=$(wc -l<40-79.csv)
-echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Pecentage.csv
+echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Percentage.csv
 
 awk '{ if ($1 >= 80 && $1 <= 159) print $1 }' length.csv>80-159.csv
 total=$(wc -l<80-159.csv)
-echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Pecentage.csv
+echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Percentage.csv
 
 awk '{ if ($1 >= 160 && $1 <= 319) print $1 }' length.csv>160-319.csv
 total=$(wc -l<160-319.csv)
-echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Pecentage.csv
+echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Percentage.csv
 
 awk '{ if ($1 >= 320 && $1 <= 639) print $1 }' length.csv>320-639.csv
 total=$(wc -l<320-639.csv)
-echo "scale=4;$total / $TotalCapPacket) * 100"|bc -l>>Pecentage.csv
+echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Percentage.csv
 
 awk '{ if ($1 >= 640 && $1 <= 1279) print $1 }' length.csv>640-1279.csv
 total=$(wc -l<640-1279.csv)
-echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Pecentage.csv
+echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Percentage.csv
 
 awk '{ if ($1 >= 1280 && $1 <= 2559) print $1 }' length.csv>1280-2559.csv
 total=$(wc -l<1280-2559.csv)
-echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Pecentage.csv
+echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Percentage.csv
 
 awk '{ if ($1 >= 2560 && $1 <= 5119) print $1 }' length.csv>2560-5119.csv
 total=$(wc -l<2560-5119.csv)
-echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Pecentage.csv
-#
-#
-paste -d ',' source.csv>Percentage.csv
-awk '{printf("%s,", $0)}' Pecentage.csv>Percentage.csv
+echo "scale=4;($total / $TotalCapPacket) * 100"|bc -l>>Percentage.csv
+
+paste -s -d ',' Percentage.csv>Pecentage.csv 
+#paste -d ',' source.csv>Percentage.csv
+#awk '{printf("%s,", $0)}' Percentage.csv>Pecentage.csv
 ##To add a machine name  in starting of line 
-sed -i 's/^/,apple,/' Percentage.csv
-#rm -rf Pecentage.csv
+#sed -i 's/^/,apple,/' Percentage.csv
+## To clear the old data Pecentage is delete and Percentage is uploaded with new data
+#rm -rf Percentage.csv
 #
 	python mysqlConnect.py
 #rm -rf Percentage.csv
