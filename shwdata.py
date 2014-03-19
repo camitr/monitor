@@ -24,8 +24,12 @@ print '''
 			<h2> Packet size and Upload & Download Bandwidth of Clients:Kbps</h2>
 			<iframe src=http://10.129.200.50/cgi-bin/monitor/shwband.py  width=100% height=50% ></iframe>
 
-			<h2> Percentage of different packets size capture</h2>
+			<h2> Percentage of Packet size Upload by client</h2>
 			<iframe src=http://10.129.200.50/cgi-bin/monitor/shwpckt.py  width=100% height=30% ></iframe>
+			
+			<h2> Percentage of Packet size  by Server</h2>
+			<iframe src=http://10.129.200.50/cgi-bin/monitor/ShwPcktDwn.py  width=100% height=30% ></iframe>
+
 
 			<table border=1 width=100% bgcolor=#6666CC>
 				<form action=/cgi-bin/monitor/run-linux.py method=post/>

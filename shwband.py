@@ -27,6 +27,7 @@ print		'''<body>
 					<td>ID</td>
 					<td>Date</td>
 					<td>Machine</td>
+					<td>IP</td>
 					<td>TotalPacketUP</td>
 					<td>AvgPacketUP</td>
 					<td>AvgPacketSize</td>
@@ -47,42 +48,47 @@ for row in rows:
 
 
 
-        print "<td bgcolor=#CCFF33>"
+        print "<td bgcolor=#FF5353>"
         print  row[2]
         print "</td>"
 
-        print "<td bgcolor=#66CCCC>"
+	print "<td bgcolor=#CEB86C>"
         print  row[3]
         print "</td>"
 
-        print "<td bgcolor=#00FFCC>"
+
+        print "<td bgcolor=#66CCCC>"
         print  row[4]
+        print "</td>"
+
+        print "<td bgcolor=#00FFCC>"
+        print  row[5]
         print "</td>"
 
 
         print "<td bgcolor=#999933>"
-        print  row[5]
-        print "</td>"
-
-        print "<td bgcolor=#00FF99>"
         print  row[6]
         print "</td>"
 
-        print "<td bgcolor=#669999>"
+        print "<td bgcolor=#00FF99>"
         print  row[7]
+        print "</td>"
+
+        print "<td bgcolor=#669999>"
+        print  row[8]
         print "</td bgcolor=#FF9966>"
 
         print "<td bgcolor=#999966>"
-        print  row[8]
+        print  row[9]
         print "</td>"
 
         print "<td bgcolor=#CC99FF>"
-        print  row[9]
+        print  row[10]
         print "</td>"
 
 
         print "<td bgcolor=#99CCFF>"
-        print  row[10]
+        print  row[11]
 print'''	</td>
         	</tr>
 

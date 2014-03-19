@@ -17,7 +17,8 @@ keyword = form.getvalue('keyword')
 conn=mdb.connect(host='10.129.200.50',user='root',passwd='123',db='bndwidth') 
 cur=conn.cursor()
 
-cur.execute("select * from Packet_Percent order by ID desc ")
+#cur.execute("select * from Packet_Percent order by ID desc ")
+cur.execute("select * from Packet_Percent_Client order by ID desc ")
 
 rows=cur.fetchall()
 
@@ -26,6 +27,7 @@ print'''	<body>
 				<tr>
 					<td>ID</td>
 					<td>Machine</td>
+					<td>IP</td>
 					<td>40-79</td>
 					<td>80-159</td>
 					<td>160-319</td>
@@ -40,39 +42,44 @@ for row in rows:
 	print  row[0]
 	print "</td>"
 	
-	print "<td bgcolor=#BC8F8F>"
+	print "<td bgcolor=#FF5353>"
 	print  row[1]
 	print "</td>"
 
 
 
-        print "<td bgcolor=#D8BFD8>"
+        print "<td bgcolor=#CEB86C>"
         print  row[2]
         print "</td>"
-
-        print "<td bgcolor=#708090>"
+	
+	print "<td bgcolor=#D8BFD8>"
         print  row[3]
         print "</td>"
 
-        print "<td bgcolor=#F5DEB3>"
+
+        print "<td bgcolor=#708090>"
         print  row[4]
+        print "</td>"
+
+        print "<td bgcolor=#F5DEB3>"
+        print  row[5]
         print "</td>"
 
 
         print "<td bgcolor=#B0E0E6>"
-        print  row[5]
-        print "</td>"
-
-        print "<td bgcolor=#F08080>"
         print  row[6]
         print "</td>"
 
-        print "<td bgcolor=#8FBC8F>"
+        print "<td bgcolor=#F08080>"
         print  row[7]
+        print "</td>"
+
+        print "<td bgcolor=#8FBC8F>"
+        print  row[8]
         print "</td bgcolor=#FF9966>"
 
         print "<td bgcolor=#999966>"
-        print  row[8]
+        print  row[9]
 print'''	</td>
 	</tr>
 			</table>
