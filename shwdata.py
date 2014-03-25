@@ -20,18 +20,40 @@ keyword = form.getvalue('keyword')
 
 print '''
 		 <body>
+			<table border=0 width=100% height=50% cellspacing=0 >
+				<tr>
+					<td><b>XP Client Bandwidth</b>
+					<!--	<h2>Upload & Download Bandwidth of XP Clients:Kbps</h2>-->
+					<iframe src=http://10.129.200.50/cgi-bin/monitor/ShwDataXp.py  width=100% height=100% ></iframe>
+					</td>
+					<td><b>Live Bandwidth</b>
 
-			<h2> Packet size and Upload & Download Bandwidth of Clients:Kbps</h2>
-			<iframe src=http://10.129.200.50/cgi-bin/monitor/shwband.py  width=100% height=50% ></iframe>
+					<!--	<h2> Packet size and Upload & Download Bandwidth of Clients:Kbps</h2>-->
+						<iframe align='right'src=http://10.129.200.50/cgi-bin/monitor/shwband.py  width=100% height=100% ></iframe>
 
-			<h2> Percentage of Packet size Upload by client</h2>
-			<iframe src=http://10.129.200.50/cgi-bin/monitor/shwpckt.py  width=100% height=30% ></iframe>
-			
-			<h2> Percentage of Packet size  by Server</h2>
-			<iframe src=http://10.129.200.50/cgi-bin/monitor/ShwPcktDwn.py  width=100% height=30% ></iframe>
-
-
-			<table border=1 width=100% bgcolor=#6666CC>
+					</td>
+				</tr>
+				<tr>
+					<td><b> Linux Client Bandwidth
+	
+						<iframe src=http://10.129.200.50/cgi-bin/monitor/ShwBandL1.py  width=100% height=100% ></iframe>
+					</td>
+					<td><b>Live Download Packet Percent</b>
+						<!--<h2> Percentage of Packet size  by Server</h2>-->
+						<iframe src=http://10.129.200.50/cgi-bin/monitor/ShwPcktDwn.py  width=100% height=100% ></iframe>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td><b>Live Upload Packet Percent</b>
+					<!--	<h2> Percentage of Packet size Upload by client</h2>-->
+						<iframe src=http://10.129.200.50/cgi-bin/monitor/shwpckt.py  width=100% height=100% ></iframe>
+					</td>
+				</tr>
+			</table>
+	
+			<table border=1 width=50% height=30% bgcolor=#6666CC>
 				<form action=/cgi-bin/monitor/run-linux.py method=post/>
 				<tr>
 					<td>

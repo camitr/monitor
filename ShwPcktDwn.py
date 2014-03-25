@@ -18,9 +18,9 @@ conn=mdb.connect(host='10.129.200.50',user='root',passwd='123',db='bndwidth')
 cur=conn.cursor()
 
 #cur.execute("select * from Packet_Percent order by ID desc ")
-#cur.execute("select * from Packet_Percent_Client order by ID desc ")
-#cur.execute("select * from Packet_Percent_Client having max(id) ")
-cur.execute("select * from Packet_Percent_Client where id in (select  max(id) from Packet_Percent_Client);")
+#cur.execute("select * from Packet_Percent_Server order by ID desc ")
+#cur.execute("select * from Packet_Percent_Server having max(id) ")
+cur.execute("select * from Packet_Percent_Server where id in (select  max(id) from Packet_Percent_Server); ")
 
 rows=cur.fetchall()
 

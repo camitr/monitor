@@ -4,7 +4,7 @@ print "Content-Type: text/html\n\n"
 
 print '''<html>
 		<head>
-			<meta http-equiv=refresh content=2>
+		<!--	<meta http-equiv=refresh content=2>-->
 		</head>'''
 
 import cgi
@@ -19,11 +19,11 @@ conn=mdb.connect(host='10.129.200.50',user='root',passwd='123',db='bndwidth')
 cur=conn.cursor()
 
 #cur.execute("select * from Analysis having max(id)")
-cur.execute("select * from Analysis where id in (select  max(id) from Analysis);")
+cur.execute("select * from Analysis where IP='10.129.200.146';")
 
 rows=cur.fetchall()
 print		'''<body> 	
-			<table border-spacing:15px width=100% cellspacing=1 > \n
+			<table border-spacing:15px width=50% cellspacing=1 > \n
 				<tr>
 					<td>ID</td>
 					<td>Date</td>
