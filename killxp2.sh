@@ -17,6 +17,6 @@ do
  	kill -9 $val
 done
 
-#rm -rf pidpython
+rm -rf pidpython
 echo "</body>"
 echo "</html>"

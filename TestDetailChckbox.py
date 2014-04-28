@@ -43,7 +43,7 @@ print'''<DOCTYPE html>
 					</div>
 				</td>
 				<td bgcolor=E8A5B0>
-				<form action="TestDataSubmit.py" method="post">
+				<form action="/cgi-bin/monitor/TestDataSubmit.py" method="post">
 					<div align=center>
 						<H1>Test Details</H1>
 						<table border=0  bgcolor=E8A5B0>
