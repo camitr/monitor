@@ -23,7 +23,7 @@ cur.execute("select * from Analysis where id in (select  max(id) from Analysis);
 
 rows=cur.fetchall()
 print		'''<body> 	
-			<table border-spacing:15px width=100% cellspacing=1 > \n
+			<table border-spacing:15px width=100% cellspacing=1 ><b>Live Bandwidth</b> \n
 				<tr>
 					<td>ID</td>
 					<td>Date</td>

@@ -25,7 +25,7 @@ cur.execute("select * from Packet_Percent_Client where id in (select  max(id) fr
 rows=cur.fetchall()
 
 print'''	<body>
-			<table border-spacing:15px width=100% cellspacing=0 > \n
+			<table border-spacing:15px width=100% cellspacing=0 > <b>Packet Percent Upload</b>\n
 				<tr>
 					<td>ID</td>
 					<td>Machine</td>

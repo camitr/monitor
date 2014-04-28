@@ -78,7 +78,7 @@ print '''
 
 				<form action=/cgi-bin/monitor/killxp2.sh method=post/>
 					<td>
-						<button type=submit autofocus style='width=48;height=60;background-color:#98FB98'>kill XP2</button>
+						<button type=submit autofocus style='width=48;height=60;background-color:#98FB98'>kill XP</button>
 					</td>
 				</form>
 

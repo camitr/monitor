@@ -1,91 +1,104 @@
 #!/usr/bin/python
-import cgi
-print '''Content-type:text/html\n'''
-
-print'''<html>
 
 
+print'''Content-type:text/html\n'''
+import cgi,cgitb
+import MySQLdb
+
+con=MySQLdb.connect(host='10.129.200.50',user='root',passwd='123',db='bndwidth')
+
+cursor1=con.cursor()
+cursor2=con.cursor()
+cursor3=con.cursor()
+query1="select name from PC_details;"
+query2="select IP from PC_details;"
+query3="Select OS from PC_details;"
+cursor1.execute(query1)
+cursor2.execute(query2)
+cursor3.execute(query3)
+
+con.commit()
+#cursor.close()
+rows1=cursor1.fetchall()
+rows2=cursor2.fetchall()
+rows3=cursor3.fetchall()
+
+
+print'''<DOCTYPE html>
+	<html>
 	<head>
-		<title>Bandwidth Test</title>
-	</head>
-	
-	<body>
-		<form action="TestData.py" method="post">
-			Test ID: 	   <input type="text" name="ID"><br>
-			Number of Machine: <input type="text" name="total_machine"><br>
-			<table border=0>
-				<tr>
-					<td>
-					
+			<title>Start Test</title>
+		</head>
+			<body>
+				<form action="TestDataSubmit.py" method="post">
+					<div align=center>
+					<H1>Test Details</H1>
+					<table border=0 bgcolor=#A9F5F2>
+						<tr>
+						<td><b>Machine Name:</b></td><td>'''
+output1 = ""
+output1 += "<select name='o1'>"
+for row in rows1:
+	output1 += "<option value='{0}' name='o1'>{0} </option>".format(row[0] )
+output1 += "</select>"
 
-						<input type="checkbox" name="os1" value="L1" checked onclick=enable(this.checked,'ifm1')>Linux 1<br>
-					</td>	
-					<td>
+print output1
+print'''						</td>
+						<td>
+						<b>	Start Time:</b><input type=time name='start' value"">
+						</td>
+						</tr>
+						<tr>
+						<td><b>IP:</b></td>
+						<td>'''
+output2 = ""
+output2 += "<select name='o2'>"
+for row in rows2:
+	output2 += "<option value='{0}'>{0} </option>".format(row[0])
+output2 += "</select>"
+print output2
+print'''						
+						</td>
+						<td>
+						<b>	End Time:</b><input type=time name='end' value="">
+						</tr>
+						<tr>
+						<td><b>OS:</b></td><td>'''
+output2 = ""
+output2 += "<select name='o3'>"
+for row in rows3:
+	output2 += "<option value='{0}' >{0}</option>".format(row[0])
+output2 += "</select>"
+print output2
+						
 
-						<input type="checkbox" name="live" value="c1" checked onclick=enable(this.checked,'ifm5')>Live all <br>
-				</tr>
-				<tr>
-					<td>
-
-						<input type="checkbox" name="os2" value="L2" checked onclick=enable(this.checked,'ifm2')>Linux 2<br> 
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="checkbox" name="os3" value="X1" checked onclick=enable(this.checked,'ifm3')>XP 1<br>		
-					</td>
-
-				</tr>
-				<tr>
-					<td>
+print'''					</td>
+						</tr>
+						<tr>
+						<td>
+						</td>
+						<td>
 							
-						<input type="checkbox" name="os4" value="X2" checked onclick=enable(this.checked,'ifm4')>XP 2<br>	
-					</td>
-					</tr>
-			
-			</table>
+						<div align=center>
+							<input type='submit' name='submit' value='submit'>	
 
-			<table width=100%>
-				<tr>
-					<td>
-						<iframe id='ifm1' style='display:none' src=http://10.129.200.50/cgi-bin/monitor/L1Run.py  width=100% height=100% ></iframe>
-
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<iframe id='ifm3' style='display:none' src=http://10.129.200.50/cgi-bin/monitor/XpRun.py  width=100% height=100% ></iframe>
-					</td>
-					<td>
-					<!--	<iframe id='ifm4' style='display:none' src=http://10.129.200.50/cgi-bin/monitor/ShwDataXp.py  width=100% height=100% ></iframe>-->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<iframe id='ifm5' style='display:none' src=http://10.129.200.50/cgi-bin/monitor/LiveBand.py  width=100% height=100% ></iframe>
-					</td>
-				</tr>
-			</table>
-
-
-			<script language='JavaScript'>
-				function enable(isEnable,os){
-					if (isEnable==false)
-						document.getElementById(os).style.display='none';
-					else
-						document.getElementById(os).style.display='inline';
-
-								}
-			</script>	
-
-		</form>
-
+						</div>
+						</td>
+						</tr>
+						<tr>
+						<td>'''
+for row in rows1:
+	output="<input type='checkbox' name='c1' value='{0}'>{0}".format(row[0])
+print output
+print'''					</table>
+					</div>
+				</form>
+			</body>
 	</html>'''
 
 
-
-
+cursor1.close()
+cursor2.close()
+cursor3.close()
 
 

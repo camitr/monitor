@@ -12,12 +12,21 @@ print ''' <!DOCTYPE html>
 import cgi
 import cgitb
 cgitb.enable(display=0, logdir="/var/www/cgi-bin/monitor/logdir")
-import MySQLdb as mdb
+#import MySQLdb as mdb
+import MySQLdb
 
-form = cgi.FieldStorage()
-keyword = form.getvalue('keyword')
+con=MySQLdb.Connect(host='127.0.0.1',user='root',passwd='123',db='bndwidth')
+cur=con.cursor()
+query1="select Name from PC_details"
+cur.execute(query1)
+con.commit()
+row=cur.fetchall()
 
+re=[elem[0] for elem in row]
 
+print re
+pc1=re[4]
+print pc1
 print '''
 		 <body>
 			<table border=0 width=100% height=50% cellspacing=0 >
@@ -34,8 +43,9 @@ print '''
 				</tr>
 				<form action=/cgi-bin/monitor/sshpython.py method=post/>
 					<td>
-						<button type=submit autofocus style='width=48;height=60;background-color:#98FB98'> XP2</button>
-				</form>
+						<input type=submit name=pc1 value={0} autofocus style='width=48;height=60;background-color:#98FB98' >'''.format(re[4]) 
+#print "i hv=",name
+print'''				</form>
 					</td>
 
 
@@ -51,4 +61,4 @@ print '''
 		</body>
 	</html>'''
 
-
+cur.close()

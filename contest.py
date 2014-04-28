@@ -13,3 +13,5 @@ class DbConnect:
 
 	def lastrowid(self):
 		return self.cursor.lastrowid
+	def fetchall(self):
+		return self.cursor.fetchall()

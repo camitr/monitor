@@ -19,7 +19,7 @@ conn=mdb.connect(host='10.129.200.50',user='root',passwd='123',db='bndwidth')
 cur=conn.cursor()
 
 #cur.execute("select * from Analysis having max(id)")
-cur.execute("select * from Analysis where IP='10.129.200.146';")
+cur.execute("select * from Analysis where IP='10.129.200.146' order by ID desc;")
 
 rows=cur.fetchall()
 print		'''<body> 	
